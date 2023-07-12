@@ -1,0 +1,10 @@
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\bin\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\bin\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.pdb
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\bin\Debug\Newtonsoft.Json.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\obj\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.csproj.AssemblyReference.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\obj\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.csproj.CoreCompileInputs.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\obj\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.csproj.Fody.CopyLocal.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\obj\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.csproj.CopyComplete
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\obj\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.DLTrigger\obj\Debug\Automation.Amdocs.ToestelSplitLoan.DLTrigger.pdb

@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Amdocs.ToestelSp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amdocs.Shared.Uhelp", "..\Automation.Amdocs.Shared\Amdocs.Shared.Uhelp\Amdocs.Shared.Uhelp\Amdocs.Shared.Uhelp.csproj", "{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Amdocs.ToestelSplitLoan.Robot", "Automation.Amdocs.ToestelSplitLoan.Robot\Automation.Amdocs.ToestelSplitLoan.Robot.csproj", "{68660FD3-70D7-4F7B-9A1C-EEEC6FBD4AD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68660FD3-70D7-4F7B-9A1C-EEEC6FBD4AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68660FD3-70D7-4F7B-9A1C-EEEC6FBD4AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68660FD3-70D7-4F7B-9A1C-EEEC6FBD4AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68660FD3-70D7-4F7B-9A1C-EEEC6FBD4AD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
