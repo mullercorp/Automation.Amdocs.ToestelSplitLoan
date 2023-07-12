@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Amdocs.ToestelSplitLoan.Data", "Automation.Amdocs.ToestelSplitLoan.Data\Automation.Amdocs.ToestelSplitLoan.Data.csproj", "{ADC18D63-E4F9-43D2-9134-7E4A069872CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Amdocs.ToestelSplitLoan.DLRobot", "Automation.Amdocs.ToestelSplitLoan.DLRobot\Automation.Amdocs.ToestelSplitLoan.DLRobot.csproj", "{18A33F47-55A5-409E-AD1B-5A299066E380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amdocs.Shared.Ufix", "..\Automation.Amdocs.Shared\Amdocs.Shared.Ufix\Amdocs.Shared.Ufix\Amdocs.Shared.Ufix.csproj", "{54729E9A-121F-4555-886E-855248FE244C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Amdocs.ToestelSplitLoan.DLTrigger", "Automation.Amdocs.ToestelSplitLoan.DLTrigger\Automation.Amdocs.ToestelSplitLoan.DLTrigger.csproj", "{0C15469F-8C89-4A57-9961-145E18D2570B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amdocs.Shared.Uhelp", "..\Automation.Amdocs.Shared\Amdocs.Shared.Uhelp\Amdocs.Shared.Uhelp\Amdocs.Shared.Uhelp.csproj", "{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADC18D63-E4F9-43D2-9134-7E4A069872CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC18D63-E4F9-43D2-9134-7E4A069872CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC18D63-E4F9-43D2-9134-7E4A069872CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC18D63-E4F9-43D2-9134-7E4A069872CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18A33F47-55A5-409E-AD1B-5A299066E380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A33F47-55A5-409E-AD1B-5A299066E380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A33F47-55A5-409E-AD1B-5A299066E380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A33F47-55A5-409E-AD1B-5A299066E380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54729E9A-121F-4555-886E-855248FE244C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54729E9A-121F-4555-886E-855248FE244C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54729E9A-121F-4555-886E-855248FE244C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54729E9A-121F-4555-886E-855248FE244C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C15469F-8C89-4A57-9961-145E18D2570B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C15469F-8C89-4A57-9961-145E18D2570B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C15469F-8C89-4A57-9961-145E18D2570B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C15469F-8C89-4A57-9961-145E18D2570B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5BAFDB-69C4-42C9-BA3C-8FA5F0543F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

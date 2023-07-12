@@ -1,0 +1,6 @@
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Data\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Data.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Data\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Data.pdb
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Data\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Data.csproj.AssemblyReference.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Data\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Data.csproj.CoreCompileInputs.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Data\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Data.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Data\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Data.pdb

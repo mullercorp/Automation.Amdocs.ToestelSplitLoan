@@ -1,0 +1,6 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CAutomation_005CAutomationShared_005CAutomationFramework_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CAutomation_005CAutomationShared_005CShared_002EJAB_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CAutomation_005CAutomationShared_005CShared_002EAutoIt_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CAutomation_005CAutomationShared_005CShared_002EUtilities_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CAutomation_005CAutomation_002EAmdocs_002EShared_005CAmdocs_002EShared_002EUhelp_005CAmdocs_002EShared_002EUhelp_005Cbin_005CDebug_005CAmdocs_002EShared_002EUhelp_002Edll/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
