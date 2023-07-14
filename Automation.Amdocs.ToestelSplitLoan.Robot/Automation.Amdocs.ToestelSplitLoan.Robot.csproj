@@ -55,7 +55,10 @@
     <ItemGroup>
         <Compile Include="MainFlow\MainFlow.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Scripts\Ufix\ChangeOrderDeviceLoanSplit.cs" />
         <Compile Include="Scripts\Ufix\CloseCase.cs" />
+        <Compile Include="Scripts\Ufix\CollectionStateCheck.cs" />
+        <Compile Include="Scripts\Ufix\HandleSplitLoan.cs" />
         <Compile Include="Scripts\Ufix\OpenViewAssignedProductsViaCtn.cs" />
         <Compile Include="Scripts\Ufix\StartUfix.cs" />
         <Compile Include="Wrappers\Wrappers.cs" />

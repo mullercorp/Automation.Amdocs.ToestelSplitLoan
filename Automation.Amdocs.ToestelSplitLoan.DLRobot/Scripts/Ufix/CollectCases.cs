@@ -49,6 +49,12 @@ namespace Automation.Amdocs.ToestelSplitLoan.DLRobot
                         else if (string.Equals(flexibleAttribute.name, "Einddatum contract", StringComparison.CurrentCultureIgnoreCase))
                             jsonSourceData.EinddatumContract = flexibleAttribute.value.Trim();
                     }
+                    
+                    var mobNrEdited = jsonSourceData.Ctn.Replace("-", "").Replace(" ", "").Trim();
+                    if (mobNrEdited.StartsWith("06"))
+                        jsonSourceData.Ctn = $"316{mobNrEdited.Remove(0, 2).Trim()}";
+                    else if (mobNrEdited.StartsWith("+31"))
+                        jsonSourceData.Ctn = $"{mobNrEdited.Remove(0, 1).Trim()}";
 
                     jsonSourceData.GatherCaseAttributesComplete = true;
                     UploadingCasesIntoDb(jsonSourceData);
@@ -59,6 +65,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.DLRobot
                     UploadingCasesIntoDb(jsonSourceData);
                 }
             }
+            
 
             InputDAO.UpdateRemarkById(CurrentScriptRun.Input.Key, $"Collected:{casesToUploadIntoDb.Count}");
 
