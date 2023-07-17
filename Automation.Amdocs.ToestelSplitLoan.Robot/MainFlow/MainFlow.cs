@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WindowsAccessBridgeInterop;
 using Amdocs.Shared.Ufix;
 using Amdocs.Shared.Ufix.Pages;
@@ -42,10 +43,10 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
                 if (!new CollectionStateCheck(ufixMainWindow, vmIdUfix, accessBridge).Execute())
                     Logger.HandleBusinessRule("In Collection", "InCollection");
-                
+
                 Logger.CheckpointSet(2);
             }
-            
+
             if (!skipInitializeJabAfterNumerousAttemps)
             {
                 if (!new UfixBaseJab().AccessUfix(out accessBridge, out ufixMainWindow, out vmIdUfix, out JavaObjectHandle acUfix, 20))
@@ -58,18 +59,31 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             var activeCtns = HandleActiveCtns();
 
             accessBridge = GoToInteractionHomeJabFirst(accessBridge, credentials, ref ufixMainWindow, ref vmIdUfix);
-                
+
             if (activeCtns > 1)
                 new HandleSplitLoan(ufixMainWindow, vmIdUfix, accessBridge).Execute();
-            
 
-            //TODO: Interaction
-            //TODO: CloseCase
+            var baseUrl = AssetsDAO.GetAssetByName("Uhelp_RestApi_FetchCasesDataUrl");
+            credentials = CredentialsDAO.GetAppCredentials(0, "Uhelp_RestApi");
+            var result = new UhelpBase().FetchCasesViaRestApi(baseUrl, Wrappers.Source.Data.AccountId, credentials.Password, credentials.Username, out var cases);
+            var caseCreationDate = DateTime.Today.ToString("dd-MM-yyyy");
+            if (result)
+            {
+                foreach (var @case in cases.Where(@case => string.Equals(@case.CaseId, Wrappers.Source.Data.CaseId, StringComparison.CurrentCultureIgnoreCase)))
+                {
+                    caseCreationDate = @case.CreationDateTime;
+                    break;
+                }
+            }
 
-            
+            var txt = $"Split Loan case {Wrappers.Source.Data.CaseId} verwerkt met einddatum {Wrappers.Source.Data.EinddatumContract} voor nummer {Wrappers.Source.Data.Ctn} nav port out vanaf {caseCreationDate} + 3 werkdagen";
+            new SharedSubProcesses().CreateInteraction(ufixMainWindow, vmIdUfix, "Split Loan","Rekening en betalen", "Toestel lening", "Toestel lening uitgelegd", txt);
+
+            new SharedSubProcesses().CloseCase(ufixMainWindow, vmIdUfix, Wrappers.Source.Data.CaseId, txt, false, retrieveIfCloseCaseBtnError:true);
 
             Logger.AddProcessLog($"Finished MainFlow with Key: {CurrentScriptRun.Input.Key}");
         }
+
 
         private static AccessBridge GoToInteractionHomeJabFirst(AccessBridge accessBridge, Credentials credentials, ref AccessibleWindow ufixMainWindow, ref int vmIdUfix)
         {

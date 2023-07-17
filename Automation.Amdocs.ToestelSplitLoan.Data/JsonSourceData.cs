@@ -11,6 +11,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Data
         public string Telefoonnummer { get; set; }
         public string EinddatumContract { get; set; }
         public string CaseId { get; set; }
+        public string AccountId { get; set; }
         public bool GatherCaseAttributesComplete { get; set; }
         
         public JsonSourceData()
@@ -21,6 +22,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Data
             Telefoonnummer = string.Empty;
             EinddatumContract = string.Empty;
             CaseId = string.Empty;
+            AccountId = string.Empty;
             GatherCaseAttributesComplete = false;
         }
     }

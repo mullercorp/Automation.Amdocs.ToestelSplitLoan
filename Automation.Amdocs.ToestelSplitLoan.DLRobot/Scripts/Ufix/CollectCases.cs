@@ -36,6 +36,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.DLRobot
                 {
                     jsonSourceData.CaseId = caseToUpload.CaseId;
                     var attributes = new UhelpBase().GetCaseAttributesViaApi(baseUrl, caseToUpload.CaseId, apiKey.Password, apiKey.Username);
+                    jsonSourceData.AccountId = attributes.account_id.ToString();
                     foreach (var flexibleAttribute in attributes.flexible_attributes)
                     {
                         if (string.Equals(flexibleAttribute.name, "Mobiele nummer", StringComparison.CurrentCultureIgnoreCase))

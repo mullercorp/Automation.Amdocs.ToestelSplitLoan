@@ -1,0 +1,14 @@
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.dll.config
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.pdb
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\Newtonsoft.Json.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\RestSharp.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\WebDriver.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\bin\Debug\WebDriver.Support.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.csproj.AssemblyReference.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.csproj.CoreCompileInputs.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.csproj.Fody.CopyLocal.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.csproj.CopyComplete
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\Automation.Amdocs.ToestelSplitLoan.Robot\obj\Debug\Automation.Amdocs.ToestelSplitLoan.Robot.pdb

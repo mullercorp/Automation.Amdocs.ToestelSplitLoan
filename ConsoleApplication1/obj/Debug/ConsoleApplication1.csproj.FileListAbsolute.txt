@@ -1,0 +1,11 @@
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Data.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\bin\Debug\Automation.Amdocs.ToestelSplitLoan.Data.pdb
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.AssemblyReference.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CopyComplete
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Automation\Automation.Amdocs.ToestelSplitLoan\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
