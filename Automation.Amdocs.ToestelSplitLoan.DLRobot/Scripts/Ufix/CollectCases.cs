@@ -25,7 +25,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.DLRobot
             if (!_mainPage.OpenQueueBoDoxGeneric("M"))
                 Logger.FinishFlowAsError("Unable to detect BO_DOX_M", "BO_DOX_M_ERROR");
 
-            var casesToUploadIntoDb = CasesToUploadIntoDb("M", CurrentScriptRun.Input.Field8, "My Queues: BO_DOX_I");
+            var casesToUploadIntoDb = CasesToUploadIntoDb("M", CurrentScriptRun.Input.Field8, "My Queues: BO_DOX_M");
 
             var baseUrl = AssetsDAO.GetAssetByName("Uhelp_TouAttributesApi");
             var apiKey = CredentialsDAO.GetAppCredentials(0, "Uhelp_RestApi");

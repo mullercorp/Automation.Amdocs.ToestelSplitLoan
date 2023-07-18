@@ -39,6 +39,9 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             var credentials = CredentialsDAO.GetAppCredentials(0, "Ufix");
             if (CurrentScriptRun.Input.Checkpoint < 2)
             {
+                if (!new UfixBaseJab().AccessUfix(out accessBridge, out ufixMainWindow, out vmIdUfix, out JavaObjectHandle acUfix, 20))
+                    Logger.FinishFlowAsError("AccessUfix Error", "AccessUfix Error");
+                
                 accessBridge = GoToInteractionHome(accessBridge, credentials, ref ufixMainWindow, ref vmIdUfix, ref skipInitializeJabAfterNumerousAttemps);
 
                 if (!new CollectionStateCheck(ufixMainWindow, vmIdUfix, accessBridge).Execute())
@@ -53,14 +56,16 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                     Logger.FinishFlowAsError("AccessUfix Error", "AccessUfix Error");
             }
 
-            new OpenViewAssignedProductsViaCtn(ufixMainWindow, vmIdUfix, accessBridge).Execute();
+            //new OpenViewAssignedProductsViaCtn(ufixMainWindow, vmIdUfix, accessBridge).Execute();
             new ChangeOrderDeviceLoanSplit(ufixMainWindow, vmIdUfix, accessBridge).Execute(out var orderNr);
+            InputDAO.UpdateRemarkById(CurrentScriptRun.Input.Key, $"OrderNr:{orderNr}");
 
             var activeCtns = HandleActiveCtns();
 
             accessBridge = GoToInteractionHomeJabFirst(accessBridge, credentials, ref ufixMainWindow, ref vmIdUfix);
+            HandlePopupsAndFlash(accessBridge);
 
-            if (activeCtns > 1)
+            if (activeCtns == 1)
                 new HandleSplitLoan(ufixMainWindow, vmIdUfix, accessBridge).Execute();
 
             var baseUrl = AssetsDAO.GetAssetByName("Uhelp_RestApi_FetchCasesDataUrl");
@@ -109,7 +114,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
         private static int HandleActiveCtns()
         {
-            var baseUrl = AssetsDAO.GetAssetByName("Uhelp_RestApit_GetActiveCtns");
+            var baseUrl = AssetsDAO.GetAssetByName("Uhelp_RestApi_GetActiveCtns");
             Logger.AddProcessLog($"baseUrl: {baseUrl}");
             var apiKey = CredentialsDAO.GetAppCredentials(0, "Uhelp_RestApi");
             Logger.AddProcessLog($"apiKey: {apiKey.Password.Substring(0, 5)}*************\r\nEnvironment: {apiKey.Username}");
@@ -122,7 +127,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
         private static AccessBridge GoToInteractionHome(AccessBridge accessBridge, Credentials credentials, ref AccessibleWindow ufixMainWindow, ref int vmIdUfix, ref bool skipInitializeJabAfterNumerousAttemps)
         {
             string password;
-            if (!new FindCallerCimSearchPage().SearchOnGenericIdViaSearchIcon(accessBridge, ufixMainWindow, vmIdUfix, Wrappers.Source.Data.Klantnummer, SearchOnGenericRadioBtn.FinancialAccount, password: credentials.Password, skipJab: true, tabToCustomerIdField: true))
+            if (!new FindCallerCimSearchPage().SearchOnGenericIdViaSearchIcon(accessBridge, ufixMainWindow, vmIdUfix, Wrappers.Source.Data.Klantnummer, SearchOnGenericRadioBtn.FinancialAccount, password: credentials.Password, skipJab: false, tabToCustomerIdField: true))
             {
                 Logger.AddProcessLog($"BLEHHHHH, strike 2......");
                 ProcessAssistant.KillProcesses("jp2Launcher");
@@ -131,7 +136,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                 Wrappers.IScreenActions.Wait(40);
                 Logger.heartbeat();
 
-                if (!new FindCallerCimSearchPage().SearchOnGenericIdViaSearchIcon(accessBridge, ufixMainWindow, vmIdUfix, Wrappers.Source.Data.Klantnummer, SearchOnGenericRadioBtn.FinancialAccount, password: credentials.Password, skipJab: true, tabToCustomerIdField: true))
+                if (!new FindCallerCimSearchPage().SearchOnGenericIdViaSearchIcon(accessBridge, ufixMainWindow, vmIdUfix, Wrappers.Source.Data.Klantnummer, SearchOnGenericRadioBtn.FinancialAccount, password: credentials.Password, skipJab: false, tabToCustomerIdField: true))
                 {
                     Logger.AddProcessLog($"BLEHHHHH, strike 3......");
                     ProcessAssistant.KillProcesses("jp2Launcher");
@@ -182,7 +187,6 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                 if (new StartUfix().Execute(skipJab) == false)
                     Logger.FinishFlowAsError("StartUfix Failed.", "UfixStartupError");
             }
-
             Wrappers.IScreenActions.Wait(2);
 
             if (!skipJab)
@@ -194,6 +198,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             Wrappers.IScreenActions.Wait();
             Wrappers.IScreenActions.ClickAtCenterOfImage("SearchIconMainPage", "Region_SearchIconMainPage");
             Wrappers.IScreenActions.Wait(3);
+            Wrappers.IScreenActions.MoveTo("CloseSubPageHelper");
 
             if (Wrappers.IScreenActions.WinActivate("Login", "", 3) != 0)
             {
