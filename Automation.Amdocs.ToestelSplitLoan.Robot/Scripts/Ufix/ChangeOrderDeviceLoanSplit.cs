@@ -32,7 +32,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
         private bool DoWork(out string orderNr)
         {
             orderNr = "";
-            
+
             GoToSearchOrderingAssignedProducts(_ufixWindow, _vmId);
 
             var internalFrame = new SearchAssignedProductsPage().GetSearchAssignedProductsInternalFrame(_ufixWindow);
@@ -47,7 +47,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             //if (table == null)
             //Logger.FinishFlowAsError("Can't claim table", "ResultTableError");
 
-            var resultBtn = JabBaseActions.GetAccessibleNodeWithParameters(_ufixWindow, "1 Record(s)", "push button", 2, child:internalFrame);
+            var resultBtn = JabBaseActions.GetAccessibleNodeWithParameters(_ufixWindow, "1 Record(s)", "push button", 2, child: internalFrame);
             //if (!CheckResultsAfterSearch(table, out var rowCount, out var columnCount))
             if (resultBtn == null)
                 Logger.HandleBusinessRule($"No or Mulitple results on {Wrappers.Source.Data.Ctn}", $"NoOrMultipleResults:{Wrappers.Source.Data.Ctn}");
@@ -63,7 +63,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             IScreenActions.Wait(3);
 
             Logger.AddProcessLog("Double check if Handle Pending OrderActions Dialog occurs....");
-            if(IScreenActions.WinWaitActiveImage("HandlePendingOrderActionsDialog","Region_HandlePendingOrderActionsDialog",false, 2))
+            if (IScreenActions.WinWaitActiveImage("HandlePendingOrderActionsDialog", "Region_HandlePendingOrderActionsDialog", false, 2))
             {
                 IScreenActions.ClickAtCenterOfImage("xCloseBtnInDialog", "Region_xCloseBtnInDialog");
                 new MainPage().ClickCloseSubScreenViaX();
@@ -75,20 +75,27 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                 if (!ClickButton(ufixErrorWindow2, vmIdUfixError2, "Ok", "push button", 5))
                     Logger.FinishFlowAsError("Popup could not be closed", "PopupCouldNotBeClosed");
             }
+
             Logger.heartbeat();
 
             new SharedSubProcesses().HandleSelectFrameworkAgreementScreen(_ufixWindow, _vmId, 10);
-            
+
             if (!new UpdateOrderActionAttributesPage().SelectReasonOfChangeOrder(_ufixWindow, _vmId, 3, "Device Loan"))
                 Logger.FinishFlowAsError("SelectReasonOfChangeOrder error", "SelectReasonOfChangeOrderError");
 
             //if (!new CeasePage().SetTerminationDate(_ufixWindow, _vmId, DateTime.Today.AddDays(15), 3))
-                //Logger.FinishFlowAsError("Set termination day error", "SetTerminationDayError");
-            
-            IScreenActions.Tab(2);
+            //Logger.FinishFlowAsError("Set termination day error", "SetTerminationDayError");
+
+            IScreenActions.Wait();
+            IScreenActions.Tab(3);
+            IScreenActions.Wait();
+            IScreenActions.Send($"Case {Wrappers.Source.Data.CaseId}");
+            IScreenActions.Wait();
+            IScreenActions.TabWait();
 
             bool inOrderSummaryTab = GetTab(_ufixWindow, _vmId, "Order Summary", 4, out var orderSummaryTab);
             int count = 0;
+            int countValidationMessage = 0;
             while (!inOrderSummaryTab)
             {
                 ClickNextBtnGeneric(_ufixWindow, _vmId, 3);
@@ -98,18 +105,24 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                     if (!ClickButton(message, messageId, "Ok", "push button", 5))
                         Logger.FinishFlowAsError("Popup could not be closed", "PopupCouldNotBeClosed");
                 }
+
                 if (PopupChecker(_accessBridge, "Validation Messages", 2, out var validationMessage, out var validationMessageId))
                 {
-                    if (!ClickButton(validationMessage, validationMessageId, "Close", "push button", 2))
-                        Logger.FinishFlowAsError("Popup could not be closed", "PopupCouldNotBeClosed");
+                    if (countValidationMessage > 0)
+
+
+                        if (!ClickButton(validationMessage, validationMessageId, "Close", "push button", 2))
+                            Logger.FinishFlowAsError("Popup could not be closed", "PopupCouldNotBeClosed");
+
+                    countValidationMessage++;
                 }
 
                 if (GetTab(_ufixWindow, _vmId, "Order Summary", 4, out orderSummaryTab))
                     inOrderSummaryTab = true;
 
                 count++;
-                if(count > 9)
-                    Logger.FinishFlowAsError("Unable to get to submit btn.....","UnableToGetToSubmit");
+                if (count > 9)
+                    Logger.FinishFlowAsError("Unable to get to submit btn.....", "UnableToGetToSubmit");
             }
 
             if (!ClickSubmitOrderBtnGeneric(_ufixWindow, _vmId))

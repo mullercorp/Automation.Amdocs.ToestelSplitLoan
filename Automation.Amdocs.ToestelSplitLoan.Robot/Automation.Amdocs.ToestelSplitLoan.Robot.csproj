@@ -146,7 +146,7 @@
         <Compile Include="Scripts\Ufix\CloseCase.cs" />
         <Compile Include="Scripts\Ufix\CollectionStateCheck.cs" />
         <Compile Include="Scripts\Ufix\HandleSplitLoan.cs" />
-        <Compile Include="Scripts\Ufix\OpenViewAssignedProductsViaCtn.cs" />
+        <Compile Include="Scripts\Ufix\PendingOrderCheck.cs" />
         <Compile Include="Scripts\Ufix\StartUfix.cs" />
         <Compile Include="Wrappers\Wrappers.cs" />
     </ItemGroup>

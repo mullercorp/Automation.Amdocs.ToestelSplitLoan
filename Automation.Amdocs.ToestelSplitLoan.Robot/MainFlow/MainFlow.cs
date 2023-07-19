@@ -56,7 +56,9 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                     Logger.FinishFlowAsError("AccessUfix Error", "AccessUfix Error");
             }
 
-            //new OpenViewAssignedProductsViaCtn(ufixMainWindow, vmIdUfix, accessBridge).Execute();
+            if(new PendingOrderCheck(ufixMainWindow, vmIdUfix, accessBridge).Execute())
+                Logger.HandleBusinessRule("Pending order.", "PendingOrder");
+            
             new ChangeOrderDeviceLoanSplit(ufixMainWindow, vmIdUfix, accessBridge).Execute(out var orderNr);
             InputDAO.UpdateRemarkById(CurrentScriptRun.Input.Key, $"OrderNr:{orderNr}");
 
@@ -68,10 +70,24 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             if (activeCtns == 1)
                 new HandleSplitLoan(ufixMainWindow, vmIdUfix, accessBridge).Execute();
 
+            var caseCreationDate = GetCreationDateCase();
+
+            var txt = $"Split Loan case {Wrappers.Source.Data.CaseId} verwerkt met einddatum {Wrappers.Source.Data.EinddatumContract} voor nummer {Wrappers.Source.Data.Ctn} nav port out vanaf {caseCreationDate}";
+            new SharedSubProcesses().CreateInteraction(ufixMainWindow, vmIdUfix, accessBridge, "Split Loan","Rekening en betalen", "Toestel lening", "Toestel lening uitgelegd", txt);
+
+            new SharedSubProcesses().CloseCase(ufixMainWindow, vmIdUfix, Wrappers.Source.Data.CaseId, txt, false, retrieveIfCloseCaseBtnError:true);
+
+            Logger.AddProcessLog($"Finished MainFlow with Key: {CurrentScriptRun.Input.Key}");
+        }
+
+        private static string GetCreationDateCase()
+        {
+            var caseCreationDate = "";
+            Credentials credentials;
             var baseUrl = AssetsDAO.GetAssetByName("Uhelp_RestApi_FetchCasesDataUrl");
             credentials = CredentialsDAO.GetAppCredentials(0, "Uhelp_RestApi");
             var result = new UhelpBase().FetchCasesViaRestApi(baseUrl, Wrappers.Source.Data.AccountId, credentials.Password, credentials.Username, out var cases);
-            var caseCreationDate = DateTime.Today.ToString("dd-MM-yyyy");
+            
             if (result)
             {
                 foreach (var @case in cases.Where(@case => string.Equals(@case.CaseId, Wrappers.Source.Data.CaseId, StringComparison.CurrentCultureIgnoreCase)))
@@ -81,12 +97,20 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                 }
             }
 
-            var txt = $"Split Loan case {Wrappers.Source.Data.CaseId} verwerkt met einddatum {Wrappers.Source.Data.EinddatumContract} voor nummer {Wrappers.Source.Data.Ctn} nav port out vanaf {caseCreationDate} + 3 werkdagen";
-            new SharedSubProcesses().CreateInteraction(ufixMainWindow, vmIdUfix, "Split Loan","Rekening en betalen", "Toestel lening", "Toestel lening uitgelegd", txt);
+            if (caseCreationDate.Contains("T"))
+            {
+                var temp = caseCreationDate.Split(new string[] { "T" }, StringSplitOptions.None)[0].Trim();
+                var caseDateTime = DateTime.ParseExact(temp, "yyyy-MM-dd", null);
+                var plusThreeWorkdays = FunctionsAssistant.AddWorkDays(caseDateTime, 3);
+                caseCreationDate = plusThreeWorkdays.ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                var plusThreeWorkdays = FunctionsAssistant.AddWorkDays(DateTime.Today, 3);
+                caseCreationDate = plusThreeWorkdays.ToString("dd-MM-yyyy");
+            }
 
-            new SharedSubProcesses().CloseCase(ufixMainWindow, vmIdUfix, Wrappers.Source.Data.CaseId, txt, false, retrieveIfCloseCaseBtnError:true);
-
-            Logger.AddProcessLog($"Finished MainFlow with Key: {CurrentScriptRun.Input.Key}");
+            return caseCreationDate;
         }
 
 

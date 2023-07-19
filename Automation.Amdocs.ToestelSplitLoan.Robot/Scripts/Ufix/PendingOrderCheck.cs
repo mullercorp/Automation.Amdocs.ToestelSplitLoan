@@ -6,14 +6,14 @@ using AutomationFramework;
 
 namespace Automation.Amdocs.ToestelSplitLoan.Robot
 {
-    public class OpenViewAssignedProductsViaCtn : InteractionHomePage
+    public class PendingOrderCheck : ProductDetailsPage
     {
         private AccessibleWindow _ufixWindow;
         private int _vmId;
         private AccessBridge _accessBridge;
         private ViewBillingArrangementPage _viewBillingArrangementPage = new ViewBillingArrangementPage();
 
-        public OpenViewAssignedProductsViaCtn(AccessibleWindow ufixWindowUfix, int vmIdUfix, AccessBridge accessBridge)
+        public PendingOrderCheck(AccessibleWindow ufixWindowUfix, int vmIdUfix, AccessBridge accessBridge)
         {
             _ufixWindow = ufixWindowUfix;
             _vmId = vmIdUfix;
@@ -22,11 +22,11 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
         public bool Execute()
         {
-            Logger.MethodEntry("OpenViewAssignedProductsViaCtn");
+            Logger.MethodEntry("PendingOrderCheck");
 
             var result = DoWork();
 
-            Logger.MethodExit("OpenViewAssignedProductsViaCtn");
+            Logger.MethodExit("PendingOrderCheck");
 
             return result;
         }
@@ -45,7 +45,20 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             if (!ClickViewAssignedProductsBtnGeneric(_ufixWindow, _vmId, "Search: Contact and Subscription"))
                 Logger.FinishFlowAsError("ClickButton Select Error", "ClickButtonSelectError");
             
-            return true;
+            var assignedProductsDetailsFrame = GetAssignedProductsDetailsFrame(_ufixWindow);
+
+            if(PopupChecker(_accessBridge, "Internal Error", 2, out var ufixErrorWindow1, out var vmIdUfixError1) 
+               || PopupChecker(_accessBridge, "Problem", 1, out ufixErrorWindow1, out vmIdUfixError1))
+            {
+                if (!ClickButton(ufixErrorWindow1, vmIdUfixError1, "Ok", "push button", 5))
+                    Logger.FinishFlowAsError("Popup could not be closed", "PopupCouldNotBeClosed");
+            }
+
+            var result = CheckIfNoPendingOrders(_ufixWindow, _vmId, 2, assignedProductsDetailsFrame);
+            
+            new MainPage().ClickCloseSubScreenViaX(2, accessBridge: _accessBridge, withDiscardSaveFormCheck:true);
+            
+            return result;
         }
     }
 }
