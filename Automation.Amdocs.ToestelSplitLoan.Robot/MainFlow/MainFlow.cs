@@ -73,7 +73,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             var caseCreationDate = GetCreationDateCase();
 
             var txt = $"Split Loan case {Wrappers.Source.Data.CaseId} verwerkt met einddatum {Wrappers.Source.Data.EinddatumContract} voor nummer {Wrappers.Source.Data.Ctn} nav port out vanaf {caseCreationDate}";
-            new SharedSubProcesses().CreateInteraction(ufixMainWindow, vmIdUfix, accessBridge, "Split Loan","Rekening en betalen", "Toestel lening", "Toestel lening uitgelegd", txt);
+            new SharedSubProcesses().CreateInteraction(ufixMainWindow, vmIdUfix, accessBridge, "Split Loan","Rekening en betalen", "Lening"/*"Toestel lening"*/, "Lening"/*"Toestel lening uitgelegd"*/, txt);
 
             new SharedSubProcesses().CloseCase(ufixMainWindow, vmIdUfix, Wrappers.Source.Data.CaseId, txt, false, retrieveIfCloseCaseBtnError:true);
 
