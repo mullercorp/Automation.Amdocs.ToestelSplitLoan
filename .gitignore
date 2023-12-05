@@ -85,3 +85,7 @@ Automation.Amdocs.ToestelSplitLoan.Robot/obj/Debug/Costura/DA211AD5999B5529CED3D
 Automation.Amdocs.ToestelSplitLoan.Robot/obj/Debug/Costura/E4A5B728A2A3C04EA479E925104AC0D58C754EF8.costura.automation.amdocs.toestelsplitloan.data.dll.compressed.compressed
 Automation.Amdocs.ToestelSplitLoan.Robot/obj/Debug/Costura/F19105ABE5855843E953DB42723DF300A37FF554.costura.automation.amdocs.toestelsplitloan.data.pdb.compressed.compressed
 ConsoleApplication1/obj/Debug/ConsoleApplication1.csproj.AssemblyReference.cache
+Automation.Amdocs.ToestelSplitLoan.Data/obj/Debug/Automation.Amdocs.ToestelSplitLoan.Data.csproj.AssemblyReference.cache
+Automation.Amdocs.ToestelSplitLoan.DLRobot/obj/Debug/Automation.Amdocs.ToestelSplitLoan.DLRobot.csproj.AssemblyReference.cache
+Automation.Amdocs.ToestelSplitLoan.DLTrigger/obj/Debug/Automation.Amdocs.ToestelSplitLoan.DLTrigger.csproj.AssemblyReference.cache
+Automation.Amdocs.ToestelSplitLoan.Robot/obj/Debug/Automation.Amdocs.ToestelSplitLoan.Robot.csproj.AssemblyReference.cache
