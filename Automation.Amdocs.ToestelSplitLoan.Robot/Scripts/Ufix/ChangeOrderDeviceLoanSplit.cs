@@ -31,7 +31,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
         private bool DoWork(out string orderNr)
         {
-            orderNr = "";
+            /*orderNr = "";
 
             GoToSearchOrderingAssignedProducts(_ufixWindow, _vmId);
 
@@ -134,7 +134,9 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
             CloseOrderAndCustomer(_ufixWindow, _vmId, _accessBridge, 2);
 
-            return true;
+            return true;*/
+
+            return ChangeOrderDeviceLoanSplit(_ufixWindow, _vmId, _accessBridge, Wrappers.Source.Data.Ctn, Wrappers.Source.Data.CaseId, out orderNr);
         }
     }
 }

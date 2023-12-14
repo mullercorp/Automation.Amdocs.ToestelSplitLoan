@@ -32,7 +32,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
         
         private bool DoWork()
         {
-            GetTab(_ufixWindow, _vmId, "Interaction Home", 10, out var ihTab);
+            /*GetTab(_ufixWindow, _vmId, "Interaction Home", 10, out var ihTab);
             new SharedSubProcesses().OpenFinancialAccount(_ufixWindow, _vmId, "", ihTab, true);
             var financialAccountPageFrame = new ViewFinancialAccountPage().GetViewFinancialAccountFrame(_ufixWindow);
             var result = new ViewFinancialAccountPage().GetCollectionState(_ufixWindow, _vmId, out var collectionState, financialAccountPageFrame);
@@ -45,9 +45,9 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
                 return false;
             }
             
-            new MainPage().ClickCloseSubScreenViaX(2, true, _accessBridge);
+            new MainPage().ClickCloseSubScreenViaX(2, true, _accessBridge);*/
             
-            return true;
+            return _sharedSubProcesses.CollectionStateCheckToestelSplit(_ufixWindow, _vmId, _accessBridge);
         }
     }
 }

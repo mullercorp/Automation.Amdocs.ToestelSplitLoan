@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Amdocs.Shared.Ufix;
 using WindowsAccessBridgeInterop;
 using Amdocs.Shared.Ufix.Pages;
 using Amdocs.Shared.Ufix.PagesJab;
@@ -33,7 +34,7 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
         private bool DoWork()
         {
-            new MainPage().ClickCloseSubScreenViaX(2, accessBridge: _accessBridge, withDiscardSaveFormCheck:true);
+            /*new MainPage().ClickCloseSubScreenViaX(2, accessBridge: _accessBridge, withDiscardSaveFormCheck:true);
             
             var mobilePhoneSearch = SearchWithPhoneNumberAndSelect(_accessBridge, _ufixWindow, _vmId, Wrappers.Source.Data.Ctn, out var noEntry, 5);
 
@@ -56,9 +57,9 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
 
             var result = CheckIfNoPendingOrders(_ufixWindow, _vmId, 2, assignedProductsDetailsFrame);
             
-            new MainPage().ClickCloseSubScreenViaX(2, accessBridge: _accessBridge, withDiscardSaveFormCheck:true);
+            new MainPage().ClickCloseSubScreenViaX(2, accessBridge: _accessBridge, withDiscardSaveFormCheck:true);*/
             
-            return result;
+            return new SharedSubProcesses().PendingOrderCheckToesteSplit(_ufixWindow, _vmId, _accessBridge, Wrappers.Source.Data.Ctn);
         }
     }
 }
