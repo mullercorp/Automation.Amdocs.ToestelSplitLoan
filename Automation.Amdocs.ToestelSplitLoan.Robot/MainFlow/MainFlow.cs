@@ -62,13 +62,15 @@ namespace Automation.Amdocs.ToestelSplitLoan.Robot
             new ChangeOrderDeviceLoanSplit(ufixMainWindow, vmIdUfix, accessBridge).Execute(out var orderNr);
             InputDAO.UpdateRemarkById(CurrentScriptRun.Input.Key, $"OrderNr:{orderNr}");
 
-            var activeCtns = HandleActiveCtns();
+            //RFC 9-1-2024: Zie mail Berna 28-12-2023 onderstaande uit -->
+            //var activeCtns = HandleActiveCtns();
 
             accessBridge = GoToInteractionHomeJabFirst(accessBridge, credentials, ref ufixMainWindow, ref vmIdUfix);
             HandlePopupsAndFlash(accessBridge);
 
-            if (activeCtns == 1)
-                new HandleSplitLoan(ufixMainWindow, vmIdUfix, accessBridge).Execute();
+            //RFC 9-1-2024: Zie mail Berna 28-12-2023 onderstaande uit -->
+            //if (activeCtns == 1)
+                //new HandleSplitLoan(ufixMainWindow, vmIdUfix, accessBridge).Execute();
 
             var caseCreationDate = GetCreationDateCase();
 
